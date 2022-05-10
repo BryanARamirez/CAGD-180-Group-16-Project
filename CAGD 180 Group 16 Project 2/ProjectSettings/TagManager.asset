@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Wall
+  - Heavy_Bullet
+  - Heavy Bullet Pick Up
+  - Extra Health
+  - Dummy
+  - Healing Orb
   layers:
   - Default
   - TransparentFX

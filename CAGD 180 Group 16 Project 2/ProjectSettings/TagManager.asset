@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Bullet
+  - Heavy Bullet Pick Up
+  - Dummy
+  - Extra Health
+  - Healing Orb
+  - Heavy_Bullet
+  - Jump Pick Up
+  - Blue Door
+  - Red Door
   layers:
   - Default
   - TransparentFX

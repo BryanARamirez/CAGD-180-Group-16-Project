@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Worked on by Bryan Ramirez
 
-public class Bullet : MonoBehaviour
+public class HeavyBullet : MonoBehaviour
 {
     public float speed;
     public bool goingLeft;
@@ -35,7 +35,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Basic bullet movement
         if (goingLeft == true)
         {
             transform.position += speed * Vector3.left * Time.deltaTime;
@@ -48,7 +47,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //To make sure the bullet disappears on impact with other objects as well as damage/ disable them if needed.
+        //To make sure the heavy bullet disappears on impact with other objects as well as damage/ disable them if needed.
         if (other.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
@@ -62,9 +61,10 @@ public class Bullet : MonoBehaviour
             other.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
-        //Only the heavy bullet should open red doors.
+        // This bullet can destroy red doors.
         if (other.gameObject.tag == "Red Door")
         {
+            other.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
     }

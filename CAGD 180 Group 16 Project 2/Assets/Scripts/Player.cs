@@ -38,6 +38,9 @@ public class Player : MonoBehaviour
     public GameObject gameOverRestart;
     public Text gameOverText;
 
+    public float invincibilityLength;
+    private float invincibilityCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +108,10 @@ public class Player : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Room 7"))
         {
             sceneNumber = 3;
+        }
+        if(invincibilityCounter > 0)
+        {
+            invincibilityCounter -= Time.deltaTime;
         }
     }
 
@@ -179,13 +186,18 @@ public class Player : MonoBehaviour
 
     private void takeDamage()
     {
-        health = health - damageAmount;
-        if(health < 0)
+        if(invincibilityCounter <= 0)
         {
-            health = 0;
+            health = health - damageAmount;
+            if (health < 0)
+            {
+                health = 0;
+            }
+            StartCoroutine(Blink());
+            invincibilityCounter = invincibilityLength;
+            SetCountText();
+            gameOver();
         }
-        SetCountText();
-        gameOver();
     }
 
     private void gameOver()
@@ -232,5 +244,21 @@ public class Player : MonoBehaviour
                 lastTime = Time.time;
             }
         }
+    }
+    public IEnumerator Blink()
+    {
+        for (int index = 0; index < 10; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+        GetComponent<MeshRenderer>().enabled = true;
     }
 }

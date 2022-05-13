@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8288727852570141822, guid: a25df03436c683a4d8e861d593edcb46, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8288727852570141823, guid: a25df03436c683a4d8e861d593edcb46, type: 3}
       propertyPath: m_Name
       value: enemy
@@ -2256,6 +2260,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2680467021008955661, guid: b5c31779b27b5004b8767e210fbcce3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680467021008955661, guid: b5c31779b27b5004b8767e210fbcce3b, type: 3}
       propertyPath: healingOrb
       value: 3
       objectReference: {fileID: 0}
@@ -2265,7 +2273,7 @@ PrefabInstance:
       objectReference: {fileID: 2131350649}
     - target: {fileID: 2680467021008955661, guid: b5c31779b27b5004b8767e210fbcce3b, type: 3}
       propertyPath: jump_force
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2680467021008955661, guid: b5c31779b27b5004b8767e210fbcce3b, type: 3}
       propertyPath: sceneNumber
@@ -2295,6 +2303,10 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 450674475}
+    - target: {fileID: 2680467021008955661, guid: b5c31779b27b5004b8767e210fbcce3b, type: 3}
+      propertyPath: invincibilityLength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2680467021008955661, guid: b5c31779b27b5004b8767e210fbcce3b, type: 3}
       propertyPath: heavyProjectilePrefab
       value: 

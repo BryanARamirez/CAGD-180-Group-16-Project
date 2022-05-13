@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     public GameObject heavyProjectilePrefab;
     public bool hasHeavyBullets;
 
+    public int sceneNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
         lastTime = Time.time;
         //At the start of the game the player should not have heavy bullets.
         hasHeavyBullets = false;
+        
+
     }
 
     // Update is called once per frame
@@ -87,6 +91,10 @@ public class Player : MonoBehaviour
         {
             isFacingLeft = false;
         }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Room 2"))
+        {
+            sceneNumber = 0;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -127,6 +135,10 @@ public class Player : MonoBehaviour
         {
             jump_force = 5;
             other.gameObject.SetActive(false);
+        }
+        if(other.tag == "Blue Scene Changer")
+        {
+            Scene_Switch.instance.switchScene(sceneNumber);
         }
     }
 

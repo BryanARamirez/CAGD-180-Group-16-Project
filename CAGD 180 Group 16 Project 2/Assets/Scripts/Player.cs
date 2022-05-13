@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public float maxHealth = 99;
     public float health;
     public float healingOrb;
-    public Text healthText; 
+    public Text healthText;
+    public float damageAmount;
 
     public bool isFacingLeft;
     public GameObject goingLeft;
@@ -33,6 +34,10 @@ public class Player : MonoBehaviour
 
     public int sceneNumber;
 
+    public GameObject gameOverCamera;
+    public GameObject gameOverRestart;
+    public Text gameOverText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +50,6 @@ public class Player : MonoBehaviour
         lastTime = Time.time;
         //At the start of the game the player should not have heavy bullets.
         hasHeavyBullets = false;
-        
-
     }
 
     // Update is called once per frame
@@ -91,9 +94,17 @@ public class Player : MonoBehaviour
         {
             isFacingLeft = false;
         }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Room 1"))
+        {
+            sceneNumber = 1;
+        }
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Room 2"))
         {
-            sceneNumber = 0;
+            sceneNumber = 2;
+        }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Room 7"))
+        {
+            sceneNumber = 3;
         }
     }
 
@@ -140,6 +151,15 @@ public class Player : MonoBehaviour
         {
             Scene_Switch.instance.switchScene(sceneNumber);
         }
+        if (other.tag == "Red Scene Changer")
+        {
+            Scene_Switch.instance.switchScene(sceneNumber);
+        }
+        if (other.tag == "enemy")
+        {
+            damageAmount = 15;
+            takeDamage();
+        }
     }
 
     private void Move()
@@ -155,6 +175,28 @@ public class Player : MonoBehaviour
             temp += Vector3.right * Time.deltaTime * speed;
         }
         transform.position = temp;
+    }
+
+    private void takeDamage()
+    {
+        health = health - damageAmount;
+        if(health < 0)
+        {
+            health = 0;
+        }
+        SetCountText();
+        gameOver();
+    }
+
+    private void gameOver()
+    {
+        if(health <= 0)
+        {
+            this.gameObject.SetActive(false);
+            gameOverCamera.gameObject.SetActive(true);
+            gameOverRestart.gameObject.SetActive(true);
+            gameOverText.text = "GAMEOVER";
+        }
     }
 
     void SetCountText()

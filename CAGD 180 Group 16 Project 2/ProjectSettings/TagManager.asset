@@ -17,6 +17,10 @@ TagManager:
   - Blue Scene Changer
   - Red Scene Changer
   - enemy
+  - Door Check 1
+  - Door Check 2
+  - Game Start
+  - 'End of Game '
   layers:
   - Default
   - TransparentFX

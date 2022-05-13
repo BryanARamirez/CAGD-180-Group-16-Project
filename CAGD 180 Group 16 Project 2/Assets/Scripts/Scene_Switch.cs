@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Worked on by Bryan Ramirez.
 
 public class Scene_Switch : MonoBehaviour
 {
 
     public GameObject player;
     public GameObject bullet;
-    public GameObject heavyBullet; 
+    public GameObject heavyBullet;
+    public GameObject buttonManager;
+    public GameObject button;
+    public GameObject canvas;
+    public GameObject gameOverCamera;
+
 
     public static Scene_Switch instance;
 
@@ -20,6 +26,10 @@ public class Scene_Switch : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(bullet);
         DontDestroyOnLoad(heavyBullet);
+        DontDestroyOnLoad(buttonManager);
+        DontDestroyOnLoad(button);
+        DontDestroyOnLoad(canvas);
+        DontDestroyOnLoad(gameOverCamera);
         DontDestroyOnLoad(this.gameObject);
     }
 
